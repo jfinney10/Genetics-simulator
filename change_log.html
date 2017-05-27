@@ -1,0 +1,109 @@
+<html>
+<head>
+  <title>Genetics project changelog</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <!-- Bootstrap - latest compiled and minified CSS -->
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+<body>
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Genetics Project</a>
+    <ul class="nav navbar-nav">
+      <li><a href="index.html">Home <span class="sr-only">(current)</span></a></li>
+      <li class="active"><a href="change_log.html">Change Log</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class = "my_text">
+  <p>
+  August 30, 2016:<br>
+  ---------------<br>
+  Added:<br>
+  Updated ageAtDeath distribution to get a more specific year.<br>
+  Added new technique for choosing a result with uneven probabilities.<br>
+  <br>
+  Bug fixes:<br>
+  Fixed getting a random number between non-zero and non-zero number.<br>
+  <br>
+  To do:<br>
+  Flush out traits with random values for parents.<br>
+  Begin genetic inheritance for children.<br>
+  Clear graph when pressing Test button.<br>
+  Redo previous probability distribution techniques.<br>
+  Refine ageAtDeath method to include diseases fatal by a certain age.<br>
+  </p>
+
+  <p>
+  August 27, 2016:<br>
+  ---------------<br>
+  Added:<br>
+  Using Bootstrap for better style<br>
+  Added variation to father's birth year<br>
+  Came up with a better way to select results with unequal probability.<br>
+  <br>
+  Bug fixes:<br>
+  <br>
+  To do:<br>
+  Fix ageAtDeath distribution.<br><!-- https://www.reddit.com/message/messages/6bwp05 -->
+  Flush out traits with random values for parents.<br>
+  Begin genetic inheritance for children.<br>
+  Clear graph when pressing Test button.<br>
+  </p>
+
+  <p>
+  August 25, 2016:<br>
+  ---------------<br>
+  Added:<br>
+  Test button - Creates two sided pyramid chart of 10000 random people.  Refresh page to clear.  Source: http://stackoverflow.com/questions/25044997/creating-population-pyramid-with-d3-js<br>
+  New random traits for the inital couple.<br>
+  <br>
+  Bug fixes:<br>
+  Cleaned up population graph.<br>
+  <br>
+  To do:<br>
+  Flush out traits with random values for parents.<br>
+  Begin genetic inheritance for children.<br>
+  Put change log link at bottom of page.<br>
+  Clear graph when pressing Test button.<br>
+  </p>
+  
+  <p>
+  August 24, 2016:<br>
+  ---------------<br>
+  Added:<br>
+  Test button - ugly chart of 10000 random people.  Refresh page to clear.<br>
+  Initial ageAtDeath distribution bar chart - only shows male data currently<br>
+  <br>
+  Bug fixes:<br>
+  Fixed ageAtDeath distribution
+  <br>
+  To do:<br>
+  Flush out traits with values.<br>
+  Begin genetic inheritance.<br>
+  Put change log link at bottom of page.<br>
+  Finish ageAtDeath distribution plot, add female data<br>
+  </p>
+
+  <p>
+  August 22, 2016:<br>
+  ---------------<br>
+  Added:<br>
+  Person.ageAtDeath - only random at this pointer, is distributed according to given statistics.<br>
+  Person.ageAtDeath - printed when person is generated, not children.<br>
+  Person - new fields, ie, eyeColor, height, etc - not implemented currently.<br>
+  <br>
+  Bug fixes:<br>
+  Fixed bug that showed same three children each time.<br>
+  Clearing old children when Generate Children button is pressed.<br>
+  <br>
+  To do:<br>
+  Flush out traits with values.<br>
+  Begin genetic inheritance.<br>
+  Put change log link at bottom of page.<br>
+  Test randomness of ageAtDeath - plot.
+  </p>
+</div>
+</body>
+</html>
