@@ -1,9 +1,9 @@
 
-function populationPyramid (data) {
+function populationPyramid(data) {
   // SET UP DIMENSIONS
   var w = 600,
-      h = 300;
-      
+    h = 300;
+
   // margin.middle is distance from center line to each y-axis
   var margin = {
     top: 20,
@@ -12,36 +12,37 @@ function populationPyramid (data) {
     left: 20,
     middle: 28
   };
-      
+
   // the width of each side of the chart
-  var regionWidth = w/2 - margin.middle;
+  var regionWidth = w / 2 - margin.middle;
 
   // these are the x-coordinates of the y-axes
   var pointA = regionWidth,
-      pointB = w - regionWidth;
+    pointB = w - regionWidth;
 
   // GET THE TOTAL POPULATION SIZE AND CREATE A FUNCTION FOR RETURNING THE PERCENTAGE
-  var totalPopulation = d3.sum(data, function(d) { return d.male + d.female; }),
-      percentage = function(d) { return d / totalPopulation; };
-    
-    
+  var totalPopulation = d3.sum(data, function (d) { return d.male + d.female; }),
+    percentage = function (d) { return d / totalPopulation; };
+
+
   // CREATE SVG
   var svg = d3.select('body').append('svg')
+    .attr('id', 'pop_pyramid')
     .attr('width', margin.left + w + margin.right)
     .attr('height', margin.top + h + margin.bottom)
     // ADD A GROUP FOR THE SPACE WITHIN THE MARGINS
     .append('g')
-      .attr('transform', translation(margin.left, margin.top));
+    .attr('transform', translation(margin.left, margin.top));
 
   // find the maximum data value on either side
   //  since this will be shared by both of the x-axes
   var maxValue = Math.max(
-    d3.max(data, function(d) { return percentage(d.male); }),
-    d3.max(data, function(d) { return percentage(d.female); })
+    d3.max(data, function (d) { return percentage(d.male); }),
+    d3.max(data, function (d) { return percentage(d.female); })
   );
 
   // SET UP SCALES
-    
+
   // the xScale goes from 0 to the width of a region
   //  it will be reversed for the left x-axis
   var xScale = d3.scale.linear()
@@ -58,21 +59,21 @@ function populationPyramid (data) {
     .range([0, regionWidth]);
 
   var yScale = d3.scale.ordinal()
-    .domain(data.map(function(d) { return d.group; }))
-    .rangeRoundBands([h,0], 0.1);
+    .domain(data.map(function (d) { return d.group; }))
+    .rangeRoundBands([h, 0], 0.1);
 
 
   // SET UP AXES
   var yAxisLeft = d3.svg.axis()
     .scale(yScale)
     .orient('right')
-    .tickSize(4,0)
-    .tickPadding(margin.middle-4);
+    .tickSize(4, 0)
+    .tickPadding(margin.middle - 4);
 
   var yAxisRight = d3.svg.axis()
     .scale(yScale)
     .orient('left')
-    .tickSize(4,0)
+    .tickSize(4, 0)
     .tickFormat('');
 
   var xAxisRight = d3.svg.axis()
@@ -120,22 +121,22 @@ function populationPyramid (data) {
   leftBarGroup.selectAll('.bar.left')
     .data(data)
     .enter().append('rect')
-      .attr('class', 'bar left')
-      .attr('x', 0)
-      .attr('y', function(d) { return yScale(d.group); })
-      .attr('width', function(d) { return xScale(percentage(d.male)); })
-      .attr('height', yScale.rangeBand());
+    .attr('class', 'bar left')
+    .attr('x', 0)
+    .attr('y', function (d) { return yScale(d.group); })
+    .attr('width', function (d) { return xScale(percentage(d.male)); })
+    .attr('height', yScale.rangeBand());
 
   rightBarGroup.selectAll('.bar.right')
     .data(data)
     .enter().append('rect')
-      .attr('class', 'bar right')
-      .attr('x', 0)
-      .attr('y', function(d) { return yScale(d.group); })
-      .attr('width', function(d) { return xScale(percentage(d.female)); })
-      .attr('height', yScale.rangeBand());
+    .attr('class', 'bar right')
+    .attr('x', 0)
+    .attr('y', function (d) { return yScale(d.group); })
+    .attr('width', function (d) { return xScale(percentage(d.female)); })
+    .attr('height', yScale.rangeBand());
 }
 
-function translation(x,y) {
+function translation(x, y) {
   return 'translate(' + x + ',' + y + ')';
 }

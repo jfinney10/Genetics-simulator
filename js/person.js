@@ -1,24 +1,24 @@
 var Person = function (gender = "") {
-  this.lastName = generateLastName ();
+  this.lastName = generateLastName();
   this.firstName = "";
   if (gender != "") { this.sex = gender; }
-  else { this.sex = getRandomSex (); }
-  this.firstName = generateFirstName (this.sex);
-  
+  else { this.sex = getRandomSex(); }
+  this.firstName = generateFirstName(this.sex);
+
   this.age = -1;
   this.ageAtDeath = 0;
-  
+
   this.birthYear = 0;
-  
+
   this.spouse = "";
   this.children = [];
   this.parents = [];
   this.birthDefects = [];
   this.generateBirthDefects();
-  this.ageAtDeath = this.generateDeathAge ();
-  
-  this.sexuality = this.generateSexuality ();
-  this.bloodType = this.generateBloodType ();
+  this.ageAtDeath = this.generateDeathAge();
+
+  this.sexuality = this.generateSexuality();
+  this.bloodType = this.generateBloodType();
   this.freckles = 0;
   this.pheomelanin = 0;
   this.melanin = 0;
@@ -72,32 +72,32 @@ Person.prototype.generateBirthYear = function () {
   if (num >= 98)   modifier = -10;
   this.birthYear += modifier;
   */
-  
-  var birthArray = [
-	  { chance: 0.01,  result: 5  },
-	  { chance: 0.03,  result: 4  },
-	  { chance: 0.03,  result: 3  },
-	  { chance: 0.03,  result: 2  },
-	  { chance: 0.05,  result: 1  },
-	  { chance: 0.11,  result: 0  },
-	  { chance: 0.11,  result: -1 },
-	  { chance: 0.11,  result: -2 },
-	  { chance: 0.11,  result: -3 },
-	  { chance: 0.11,  result: -4 },
-	  { chance: 0.07,  result: -5 },
-	  { chance: 0.03,  result: -6 },
-	  { chance: 0.04,  result: -7 },
-	  { chance: 0.04,  result: -8 },
-	  { chance: 0.03,  result: -9 },
-	  { chance: 0.03,  result: -10}
-	];
 
-  this.birthYear += birthArray [getDiscreteProbableValue (birthArray)].result;
-  console.log ('father\'s birth year difference: ' + this.birthYear);
+  var birthArray = [
+    { chance: 0.01, result: 5 },
+    { chance: 0.03, result: 4 },
+    { chance: 0.03, result: 3 },
+    { chance: 0.03, result: 2 },
+    { chance: 0.05, result: 1 },
+    { chance: 0.11, result: 0 },
+    { chance: 0.11, result: -1 },
+    { chance: 0.11, result: -2 },
+    { chance: 0.11, result: -3 },
+    { chance: 0.11, result: -4 },
+    { chance: 0.07, result: -5 },
+    { chance: 0.03, result: -6 },
+    { chance: 0.04, result: -7 },
+    { chance: 0.04, result: -8 },
+    { chance: 0.03, result: -9 },
+    { chance: 0.03, result: -10 }
+  ];
+
+  this.birthYear += birthArray[getDiscreteProbableValue(birthArray)].result;
+  console.log('father\'s birth year difference: ' + this.birthYear);
 }
 
 Person.prototype.generateSexuality = function () {
-  var num = getRandomNumber (0, 100000);
+  var num = getRandomNumber(0, 100000);
   if (num >= 4501) return "Heterosexual";
   else return "Homosexual";
 }
@@ -105,26 +105,25 @@ Person.prototype.generateSexuality = function () {
 Person.prototype.generateBloodType = function () {
   /* 45% OO, 26.6% AO, 13.3% AA, 9.6% BO, 5% AB, 0.3% BB */
   var rv;
-  var num = getRandomNumber (0, 1000);
-  
+  var num = getRandomNumber(0, 1000);
+
   if (num <= 450) rv = ["O", "O"];
-  else if (num <= 450+133) rv = ["A", "O"];
-  else if (num <= 450+133+266) rv = ["A", "A"];
-  else if (num <= 450+133+266+096) rv = ["B", "O"];
-  else if (num <= 450+133+266+096+005) rv = ["A", "B"];
+  else if (num <= 450 + 133) rv = ["A", "O"];
+  else if (num <= 450 + 133 + 266) rv = ["A", "A"];
+  else if (num <= 450 + 133 + 266 + 096) rv = ["B", "O"];
+  else if (num <= 450 + 133 + 266 + 096 + 005) rv = ["A", "B"];
   else rv = ["B", "B"];
   //console.log ("  generateBloodType returning " + rv.toString());
   return rv;
 };
 
 Person.prototype.calcDeathYear = function () {
-  if (this.hasFatalTrait())
-  {
+  if (this.hasFatalTrait()) {
     this.ageAtDeath = 0;
     return;
   }
-  
-  var num = getRandomNumber (0, 1000);
+
+  var num = getRandomNumber(0, 1000);
 
   if (num <= 5) this.ageAtDeath = 0;
   else if (num <= 15) this.ageAtDeath = 5;
@@ -162,67 +161,59 @@ Person.prototype.printMe = function () {
     }
   }
   */
-  AddChildText ("Name: " + this.firstName + " " + this.lastName);
-  AddChildText ("&nbsp; Sex: " + this.sex);
-  AddChildText ("&nbsp; Age at Death: " + this.ageAtDeath);
-  AddChildText ("&nbsp; Blood type: " + this.bloodType[0] + this.bloodType[1]);
-  if (this.birthDefects.length > 0)
-  {
-    AddChildText ("&nbsp; Birth Defects: ");
-    for (var iter=0; iter<this.birthDefects.length; iter++)
-    {
-      AddChildText (" &nbsp;&nbsp;&nbsp;  " + this.birthDefects[iter].name);
+  AddChildText("Name: " + this.firstName + " " + this.lastName);
+  AddChildText("&nbsp; Sex: " + this.sex);
+  AddChildText("&nbsp; Age at Death: " + this.ageAtDeath);
+  AddChildText("&nbsp; Blood type: " + this.bloodType[0] + this.bloodType[1]);
+  if (this.birthDefects.length > 0) {
+    AddChildText("&nbsp; Birth Defects: ");
+    for (var iter = 0; iter < this.birthDefects.length; iter++) {
+      AddChildText(" &nbsp;&nbsp;&nbsp;  " + this.birthDefects[iter].name);
     }
   }
 }
 
-Person.prototype.printMe2 = function ()
-{ 
+Person.prototype.printMe2 = function () {
   var div = document.getElementById('textHere');
   div.innerHTML = div.innerHTML + this.name + ' ' + this.title + '<br>';
 }
 
-Person.prototype.Introduce = function (spacesToIndent)
-{
+Person.prototype.Introduce = function (spacesToIndent) {
   var spaces = '';
-  if (spacesToIndent != null)
-  {
+  if (spacesToIndent != null) {
     for (var i = 0; i < spacesToIndent; i++) spaces += '-';
   }
   var div = document.getElementById('textHere');
   div.innerHTML = div.innerHTML + spaces +
-                  "Hi, my name is " + this.name + '. ' + 
-                  "I am " + this.titleWithArticle + '.<br>';
-  if (this.reports.length != 0)
-  {
-    for (var i = 0; i < this.reports.length; i++) this.reports[i].Introduce(spacesToIndent+2);
+    "Hi, my name is " + this.name + '. ' +
+    "I am " + this.titleWithArticle + '.<br>';
+  if (this.reports.length != 0) {
+    for (var i = 0; i < this.reports.length; i++) this.reports[i].Introduce(spacesToIndent + 2);
   }
 }
 
-function getRandomSex () {
-  var t = Math.random ();
+function getRandomSex() {
+  var t = Math.random();
   if (t > .5) return "Male";
   else return "Female";
 }
 
-function generateFirstName (sex) {
-  if (sex === "Male") return maleFirstNames[getRandomNumber (0,maleFirstNames.length-1)];
-  else return femaleFirstNames[getRandomNumber (0,femaleFirstNames.length-1)];
+function generateFirstName(sex) {
+  if (sex === "Male") return maleFirstNames[getRandomNumber(0, maleFirstNames.length - 1)];
+  else return femaleFirstNames[getRandomNumber(0, femaleFirstNames.length - 1)];
 }
 
-function generateLastName () {
-  return lastNames[getRandomNumber (0,lastNames.length-1)];
+function generateLastName() {
+  return lastNames[getRandomNumber(0, lastNames.length - 1)];
 }
 
 Person.prototype.generateBirthDefects = function () {
   var i;
-  for (i=0; i<birthDefectList.length; i++)
-  {
-    var t = Math.random ();
-    if (t < birthDefectList[i].rate)
-    {
+  for (i = 0; i < birthDefectList.length; i++) {
+    var t = Math.random();
+    if (t < birthDefectList[i].rate) {
       //console.log ("   Adding: " + birthDefectList[i].name);
-      this.birthDefects.push (birthDefectList[i]);
+      this.birthDefects.push(birthDefectList[i]);
       //console.log ("   List: " + this.birthDefects);
     }
   }
@@ -231,46 +222,41 @@ Person.prototype.generateBirthDefects = function () {
 Person.prototype.hasFatalTrait = function () {
   if (this.birthDefects.length == 0) return false;
   var i;
-  for (i=0; i<this.birthDefects.length; i++)
-  {
+  for (i = 0; i < this.birthDefects.length; i++) {
     if (this.birthDefects[i].fatalityRate == 1.0) return true;
   }
 }
 
 Person.prototype.generateDeathAge = function () {
-  if (this.hasFatalTrait())
-  {
+  if (this.hasFatalTrait()) {
     this.ageAtDeath = 0;
     return 0;
   }
-  
-  var deathAgeIndex = getDiscreteProbableValue (deathArray);
+
+  var deathAgeIndex = getDiscreteProbableValue(deathArray);
   //console.log ('index: '+ deathAgeIndex);
-  var upperDeathAge = deathArray [deathAgeIndex].result;
+  var upperDeathAge = deathArray[deathAgeIndex].result;
   //console.log ('upper:' + upperDeathAge);
-  if (upperDeathAge == 0)
-  {
+  if (upperDeathAge == 0) {
     return 0;
   }
-  var lowerAge = deathArray [deathAgeIndex - 1].result+1;
+  var lowerAge = deathArray[deathAgeIndex - 1].result + 1;
   //console.log ('lower: ' + lowerAge);
   var rv = getRandomNumber(lowerAge, upperDeathAge);
   //console.log ('rv: ' + rv);
   return rv;
 }
 
-function test3 (p)
-{
+function test3(p) {
   //getDiscreteProbableValue (deathArray);
-  
-  var results = [0,0,0,0,0,0,0,0,0,0,0	];
-  for (var i=0; i<100000; i++)
-  {
-    results [getDiscreteProbableValue (deathArray)]++;
+
+  var results = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+  for (var i = 0; i < 100000; i++) {
+    results[getDiscreteProbableValue(deathArray)]++;
   }
-  console.log (results);
-  
-  
+  console.log(results);
+
+
   /*
   =IF(AND(OR(AB15="[FATAL] EDWARDS SYNDROME (TRISOMY 18)",
              AB16="[FATAL] TRISOMY 13",
@@ -412,130 +398,130 @@ IF(X9>=Death!$M$4,Death!$I$5,"")))))))))))))))))))))))))))))))))))))))))))))
   */
 }
 
-console.log ("Person loaded");
+console.log("Person loaded");
 
 var deathArray = [
   { chance: 0.005, result: 0 },
-  { chance: 0.01,  result: 5 },
-  { chance: 0.03,  result: 35 },
-  { chance: 0.05,  result: 45 },
-  { chance: 0.07,  result: 55 },
-  { chance: 0.12,  result: 65 },
-  { chance: 0.17,  result: 70 },
-  { chance: 0.21,  result: 75 },
-  { chance: 0.15,  result: 80 },
+  { chance: 0.01, result: 5 },
+  { chance: 0.03, result: 35 },
+  { chance: 0.05, result: 45 },
+  { chance: 0.07, result: 55 },
+  { chance: 0.12, result: 65 },
+  { chance: 0.17, result: 70 },
+  { chance: 0.21, result: 75 },
+  { chance: 0.15, result: 80 },
   { chance: 0.065, result: 85 },
-  { chance: 0.12,  result: 100 }
+  { chance: 0.12, result: 100 }
 ];
 
 var maleFirstNames = [
-"AARON",
-"ABDUL",
-"ABE",
-"ABEL",
-"Abirard",
-"ABRAHAM",
-"ABRAM",
-"ADALBERTO",
-"ADAM",
-"ADAN",
-"Adario",
-"ADOLFO",
-"ADOLPH",
-"Adon",
-"ADRIAN",
-"Advem",
-"Aekley",
-"Aelom",
-"AFTON",
-"AGUSTIN"
+  "AARON",
+  "ABDUL",
+  "ABE",
+  "ABEL",
+  "Abirard",
+  "ABRAHAM",
+  "ABRAM",
+  "ADALBERTO",
+  "ADAM",
+  "ADAN",
+  "Adario",
+  "ADOLFO",
+  "ADOLPH",
+  "Adon",
+  "ADRIAN",
+  "Advem",
+  "Aekley",
+  "Aelom",
+  "AFTON",
+  "AGUSTIN"
 ];
 
 var femaleFirstNames = [
-"ABBEY",
-"ABBIE",
-"ABBY",
-"ABIGAIL",
-"Abilene",
-"Abril",
-"ADA",
-"ADAH",
-"ADALINE",
-"Adda",
-"Addalyn",
-"ADDIE",
-"ADELA",
-"ADELAIDA",
-"ADELAIDE",
-"ADELE",
-"ADELIA",
-"ADELINA",
-"ADELINE",
-"Adelise"
+  "ABBEY",
+  "ABBIE",
+  "ABBY",
+  "ABIGAIL",
+  "Abilene",
+  "Abril",
+  "ADA",
+  "ADAH",
+  "ADALINE",
+  "Adda",
+  "Addalyn",
+  "ADDIE",
+  "ADELA",
+  "ADELAIDA",
+  "ADELAIDE",
+  "ADELE",
+  "ADELIA",
+  "ADELINA",
+  "ADELINE",
+  "Adelise"
 ];
 
 var lastNames = [
-"AABERG",
-"AADLAND",
-"AAGAARD",
-"AARON",
-"AARONS",
-"ABAD",
-"ABADI",
-"ABADIE",
-"ABAIR",
-"ABAJA",
-"ABAJIAN",
-"ABALOS",
-"ABALOZ",
-"ABAR",
-"ABARCA",
-"ABARE",
-"ABASCAL",
-"ABASTA",
-"ABATE",
-"ABATI"
+  "AABERG",
+  "AADLAND",
+  "AAGAARD",
+  "AARON",
+  "AARONS",
+  "ABAD",
+  "ABADI",
+  "ABADIE",
+  "ABAIR",
+  "ABAJA",
+  "ABAJIAN",
+  "ABALOS",
+  "ABALOZ",
+  "ABAR",
+  "ABARCA",
+  "ABARE",
+  "ABASCAL",
+  "ABASTA",
+  "ABATE",
+  "ABATI"
 ];
 
 // Just a list for now.  Could be called conditionList
 var birthDefectList = [
-{name:"ANOPTHALMIA/MICROPTHALMIA",            rate:1/50000,   fatalityRate: 0.0 },
-{name:"SPINA BIFIDA",                         rate:1/10000,   fatalityRate: 0.0 },
-{name:"REDUCTION DEFORMITY UPPER LIMBS",      rate:9/25000,   fatalityRate: 0.0 },
-{name:"REDUCTION DEFORMITY LOWER LIMBS",      rate:9/50000,   fatalityRate: 0.0 },
-{name:"EDWARDS SYNDROME [TRISOMY 18]",        rate:19/50000,  fatalityRate: 1.0 },
-{name:"TRISOMY 13",                           rate:7/50000,   fatalityRate: 1.0 },
-{name:"DOWN'S SYNDROME [TRISOMY 21]",         rate:73/50000,  fatalityRate: 0.0 },
-{name:"ISODICENTRIC 15",                      rate:7/50000,   fatalityRate: 0.0 },
-{name:"CLEFT LIP W/ OR W/O CLEFT PALATE",     rate:7/5000,    fatalityRate: 0.0 },
-{name:"GASTROSCHISIS OR OMPHALOCELE",         rate:1/10000,   fatalityRate: 1.0 },
+  { name: "ANOPTHALMIA/MICROPTHALMIA", rate: 1 / 50000, fatalityRate: 0.0 },
+  { name: "SPINA BIFIDA", rate: 1 / 10000, fatalityRate: 0.0 },
+  { name: "REDUCTION DEFORMITY UPPER LIMBS", rate: 9 / 25000, fatalityRate: 0.0 },
+  { name: "REDUCTION DEFORMITY LOWER LIMBS", rate: 9 / 50000, fatalityRate: 0.0 },
+  { name: "EDWARDS SYNDROME [TRISOMY 18]", rate: 19 / 50000, fatalityRate: 1.0 },
+  { name: "TRISOMY 13", rate: 7 / 50000, fatalityRate: 1.0 },
+  { name: "DOWN'S SYNDROME [TRISOMY 21]", rate: 73 / 50000, fatalityRate: 0.0 },
+  { name: "ISODICENTRIC 15", rate: 7 / 50000, fatalityRate: 0.0 },
+  { name: "CLEFT LIP W/ OR W/O CLEFT PALATE", rate: 7 / 5000, fatalityRate: 0.0 },
+  { name: "GASTROSCHISIS OR OMPHALOCELE", rate: 1 / 10000, fatalityRate: 1.0 },
 
-{name:"MITOCHONDRIAL MYOPATHY",               rate:1/6250,    fatalityRate: 0.0 },
-{name:"LEBER'S HEREDITARY OPTIC NEUROPATHY",  rate:1/10000,   fatalityRate: 0.0 },
-{name:"HETEROCHROMIA",                        rate:3/5000,    fatalityRate: 0.0 },
-{name:"CYSTIC FIBROSIS",                      rate:1/2500,    fatalityRate: 0.0 },
-{name:"TETRALOGY OF FALLOT",                  rate:3/500,     fatalityRate: 0.0 },
-{name:"SICKLE CELL ANEMIA",                   rate:1/5000,    fatalityRate: 0.0 },
-{name:"SPINAL MUSCULAR ATROPHE",              rate:1/10000,   fatalityRate: 0.5 },
-{name:"DUCHENNE MUSCULAR DYSTROPHY",          rate:1/10000,   fatalityRate: 0.0 },
-{name:"HAEMOPHILIA",                          rate:1/5000,    fatalityRate: 0.0 },
-{name:"COLOR BLINDNESS",                      rate:2/25,      fatalityRate: 0.0 }
+  { name: "MITOCHONDRIAL MYOPATHY", rate: 1 / 6250, fatalityRate: 0.0 },
+  { name: "LEBER'S HEREDITARY OPTIC NEUROPATHY", rate: 1 / 10000, fatalityRate: 0.0 },
+  { name: "HETEROCHROMIA", rate: 3 / 5000, fatalityRate: 0.0 },
+  { name: "CYSTIC FIBROSIS", rate: 1 / 2500, fatalityRate: 0.0 },
+  { name: "TETRALOGY OF FALLOT", rate: 3 / 500, fatalityRate: 0.0 },
+  { name: "SICKLE CELL ANEMIA", rate: 1 / 5000, fatalityRate: 0.0 },
+  { name: "SPINAL MUSCULAR ATROPHE", rate: 1 / 10000, fatalityRate: 0.5 },
+  { name: "DUCHENNE MUSCULAR DYSTROPHY", rate: 1 / 10000, fatalityRate: 0.0 },
+  { name: "HAEMOPHILIA", rate: 1 / 5000, fatalityRate: 0.0 },
+  { name: "COLOR BLINDNESS", rate: 2 / 25, fatalityRate: 0.0 }
 ];
 
 var fertilityRate = [
-{age: 16, rate: .005 },
-{age: 18, rate: .0075 },
-{age: 20, rate: .02 },
-{age: 22, rate: .06 },
-{age: 24, rate: .12 },
-{age: 26, rate: .22 },
-{age: 28, rate: .18 },
-{age: 30, rate: .12 },
-{age: 32, rate: .10 },
-{age: 34, rate: .08 },
-{age: 36, rate: .06 },
-{age: 38, rate: .02 },
-{age: 40, rate: .0025 },
-{age: 42, rate: .0025 },
-{age: 44, rate: .0025 }
+  { age: 16, rate: .005 },
+  { age: 18, rate: .0075 },
+  { age: 20, rate: .02 },
+  { age: 22, rate: .06 },
+  { age: 24, rate: .12 },
+  { age: 26, rate: .22 },
+  { age: 28, rate: .18 },
+  { age: 30, rate: .12 },
+  { age: 32, rate: .10 },
+  { age: 34, rate: .08 },
+  { age: 36, rate: .06 },
+  { age: 38, rate: .02 },
+  { age: 40, rate: .0025 },
+  { age: 42, rate: .0025 },
+  { age: 44, rate: .0025 }
 ];

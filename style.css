@@ -1,5 +1,9 @@
 body { padding-top: 70px; }
 
+#pop_pyramid {
+  margin: 0 0 0 20px;
+}
+
 .my_text {
     font-family: "Courier New", Courier, monospace;
     font-size: 14px;
