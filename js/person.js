@@ -33,46 +33,6 @@ var Person = function (gender = "") {
 };
 
 Person.prototype.generateBirthYear = function () {
-  //var num = getRandomNumber (1, 100);
-  /*
-    1	3.0%	  -5
-    4	3.0%	  -4
-    7	3.0%	  -3
-    10	5.0%	-2
-    15	11.0%	-1
-    26	11.0%	0
-    37	11.0%	1
-    48	11.0%	2
-    59	11.0%	3
-    70	7.0%	4
-    77	7.0%	5
-    84	4.0%	6
-    88	4.0%	7
-    92	3.0%	8
-    95	3.0%	9
-    98	3.0%	10
-  */
-  /*
-  var modifier;
-  if (num >= 01)   modifier = 5 ;
-  if (num >= 04)   modifier = 4 ;
-  if (num >= 07)   modifier = 3 ;
-  if (num >= 10)   modifier = 2 ;
-  if (num >= 15)   modifier = 1 ;
-  if (num >= 26)   modifier = 0 ;
-  if (num >= 37)   modifier = -1;
-  if (num >= 48)   modifier = -2;
-  if (num >= 59)   modifier = -3;
-  if (num >= 70)   modifier = -4;
-  if (num >= 77)   modifier = -5;
-  if (num >= 84)   modifier = -6;
-  if (num >= 88)   modifier = -7;
-  if (num >= 92)   modifier = -8;
-  if (num >= 95)   modifier = -9;
-  if (num >= 98)   modifier = -10;
-  this.birthYear += modifier;
-  */
-
   var birthArray = [
     { chance: 0.01, result: 5 },
     { chance: 0.03, result: 4 },
@@ -102,6 +62,7 @@ Person.prototype.generateSexuality = function () {
   else return "Homosexual";
 }
 
+//TODO - adjust to use array and getDiscreteProbableValue()
 Person.prototype.generateBloodType = function () {
   /* 45% OO, 26.6% AO, 13.3% AA, 9.6% BO, 5% AB, 0.3% BB */
   var rv;

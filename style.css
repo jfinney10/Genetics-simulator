@@ -75,9 +75,9 @@ svg {
 .bar {
   fill-opacity: 0.5;
 }
-.bar.left {
+.bar--male {
   fill: steelblue;
 }
-.bar.right {
-  fill: firebrick;
+.bar--female {
+  fill: #ff8096;
 }

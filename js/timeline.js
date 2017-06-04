@@ -16,8 +16,8 @@ function CreateTimeline(data) {
   var x = d3.scale.linear()
     //.domain([-10, 105])
     .domain([
-      d3.min(data, function (d) { return d.birthYear; }),
-      d3.max(data, function (d) { return d.ageAtDeath; })
+    0, //d3.min(data, function (d) { return d.birthYear; }),
+    110 //d3.max(data, function (d) { return d.ageAtDeath; })
     ])
     .range([0, width])
     .nice();
@@ -51,7 +51,9 @@ function CreateTimeline(data) {
   svg.selectAll(".bar")
     .data(data)
     .enter().append("rect")
-    .attr("class", function (d) { return "bar bar--" + (d.value < 0 ? "negative" : "positive"); })
+    .attr("class", function (d) {
+      return "bar bar--" + (d.sex === 'Male' ? "male" : "female");
+    })
     .attr("x", function (d) {
       var rv = x(d.birthYear);
       console.log('d.birthYear:', d.birthYear);
@@ -65,8 +67,8 @@ function CreateTimeline(data) {
       return rv;
     })
     .attr("width", function (d) {
-      var rv = x(d.ageAtDeath + d.birthYear);
-      console.log('width val:', d.ageAtDeath + d.birthYear);
+      var rv = x(d.ageAtDeath);
+      console.log('width val:', d.ageAtDeath);
       console.log('width rv:', rv);
       return rv;
     })
