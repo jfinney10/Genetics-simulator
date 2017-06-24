@@ -56,8 +56,8 @@ function CreateTimeline(data) {
     })
     .attr("x", function (d) {
       var rv = x(d.birthYear);
-      console.log('d.birthYear:', d.birthYear);
-      console.log('x rv:', rv);
+      //console.log('d.birthYear:', d.birthYear);
+      //console.log('x rv:', rv);
       return rv;
     })
     .attr("y", function (d, i) {
@@ -68,8 +68,8 @@ function CreateTimeline(data) {
     })
     .attr("width", function (d) {
       var rv = x(d.ageAtDeath);
-      console.log('width val:', d.ageAtDeath);
-      console.log('width rv:', rv);
+      //console.log('width val:', d.ageAtDeath);
+      //console.log('width rv:', rv);
       return rv;
     })
     .attr("height", 20);

@@ -469,6 +469,29 @@ var birthDefectList = [
   { name: "COLOR BLINDNESS", rate: 2 / 25, fatalityRate: 0.0 }
 ];
 
+var birthDefectListNew = [
+  [ "ANOPTHALMIA/MICROPTHALMIA", 1 / 50000, 0.0 ],
+  [ "SPINA BIFIDA", 1 / 10000, 0.0 ],
+  [ "REDUCTION DEFORMITY UPPER LIMBS", 9 / 25000, 0.0 ],
+  [ "REDUCTION DEFORMITY LOWER LIMBS", 9 / 50000, 0.0 ],
+  [ "EDWARDS SYNDROME [TRISOMY 18]", 19 / 50000, 1.0 ],
+  [ "TRISOMY 13", 7 / 50000, 1.0 ],
+  [ "DOWN'S SYNDROME [TRISOMY 21]", 73 / 50000, 0.0 ],
+  [ "ISODICENTRIC 15", 7 / 50000, 0.0 ],
+  [ "CLEFT LIP W/ OR W/O CLEFT PALATE", 7 / 5000, 0.0 ],
+  [ "GASTROSCHISIS OR OMPHALOCELE", 1 / 10000, 1.0 ],
+  [ "MITOCHONDRIAL MYOPATHY", 1 / 6250, 0.0 ],
+  [ "LEBER'S HEREDITARY OPTIC NEUROPATHY", 1 / 10000, 0.0 ],
+  [ "HETEROCHROMIA", 3 / 5000, 0.0 ],
+  [ "CYSTIC FIBROSIS", 1 / 2500, 0.0 ],
+  [ "TETRALOGY OF FALLOT", 3 / 500, 0.0 ],
+  [ "SICKLE CELL ANEMIA", 1 / 5000, 0.0 ],
+  [ "SPINAL MUSCULAR ATROPHE", 1 / 10000, 0.5 ],
+  [ "DUCHENNE MUSCULAR DYSTROPHY", 1 / 10000, 0.0 ],
+  [ "HAEMOPHILIA", 1 / 5000, 0.0 ],
+  [ "COLOR BLINDNESS", 2 / 25, 0.0 ]
+];
+
 var fertilityRate = [
   { age: 16, rate: .005 },
   { age: 18, rate: .0075 },
